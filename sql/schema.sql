@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS excuse_generator;
+USE excuse_generator;
+-- Schema for Excuse Generator Application
+
 CREATE TABLE users (
   user_id CHAR(36) PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
