@@ -2,12 +2,11 @@
 const express = require('express');
 const router = express.Router();
 
-// Import feature routes (commented out for now)
-// const authRoutes = require('./auth/auth.routes');
-// const userRoutes = require('./users/user.routes');
+const authRoutes = require('./auth/authRoute');
+// More to come later .....
 
-// router.use('/auth', authRoutes);
-// router.use('/users', userRoutes);
+
+router.use('/auth', authRoutes);
 
 // TODO: add more features as they are built
 router.get('/', (req, res) => res.send('Excuse Generator API Running'));
