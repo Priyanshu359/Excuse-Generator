@@ -103,7 +103,7 @@ CREATE TABLE user_tokens (
   token_id CHAR(36) PRIMARY KEY,
   user_id CHAR(36),
   balance INT DEFAULT 0,
-  change INT NOT NULL,
+  token_change INT NOT NULL,
   reason TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(user_id)
