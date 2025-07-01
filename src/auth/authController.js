@@ -1,7 +1,7 @@
 const authModel = require('./authModel');
 const authService = require('./authService');
 
-exports.register = async (req, res) => {
+exports.register = async (req, res, next) => {
     try {
         const { username, email, password } = req.body;
         const existingUser = await authModel.findUserByEmail(email);
@@ -17,7 +17,7 @@ exports.register = async (req, res) => {
     }
 };
 
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
     try { 
         const { email, password } = req.body;
         const user = await authModel.findUserByEmail(email);
