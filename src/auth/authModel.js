@@ -6,7 +6,22 @@ exports.createUser = async (user) => {
         VALUES ( ?, ?, ?)`,
         [user.username, user.email, user.password_hash]
     );
-    return result;
+    return result.insertId;
+}
+
+exports.getRoleIdByName = async (role) => {
+    const [rows] = await db.execute(
+        `SELECT role_id FROM user_roles WHERE role_name = ?`,
+        [role]
+    );
+    return rows[0]?.role_id;
+}
+
+exports.assignRoleToUser = async (user_id, role_id) => { 
+    await db.execute(
+        `INSERT INTO user_role_map (user_id, role_id) VALUES (?, ?)`,
+        [user_id, role_id]
+    );
 }
 
 exports.findUserByEmail = async (email) => {
